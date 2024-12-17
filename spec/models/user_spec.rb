@@ -46,8 +46,33 @@ RSpec.describe User, type: :model do
     end
 
     it "is invalid with a short password" do
-      @user.password = "a"
+      @user.password = "Pa1@"
       expect(@user).to_not be_valid
+      # expect(@user.errors.full_messages).to include("Password deve ter no mínimo 9 caracteres")
+    end
+
+    it "is invalid with a password without a number" do
+      @user.password = "Password@"
+      expect(@user).to_not be_valid
+      expect(@user.errors.full_messages).to include("Password deve incluir um número")
+    end
+
+    it "is invalid with a password without a special character" do
+      @user.password = "Password123"
+      expect(@user).to_not be_valid
+      expect(@user.errors.full_messages).to include("Password deve incluir um caractere especial")
+    end
+
+    it "is invalid with a password without a uppercase letter" do
+      @user.password = "password123@"
+      expect(@user).to_not be_valid
+      expect(@user.errors.full_messages).to include("Password deve incluir uma letra maiúscula")
+    end
+
+    it "is invalid with a password without a lowercase letter" do
+      @user.password = "PASSWORD123!"
+      expect(@user).to_not be_valid
+      expect(@user.errors.full_messages).to include("Password deve incluir uma letra minúscula")
     end
   end
 end
