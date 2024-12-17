@@ -35,7 +35,7 @@ class User < ApplicationRecord
     end
 
     unless password.match?(/[A-Z]/)
-      eros.add(:password, "deve incluir uma letra maiúscula")
+      errors.add(:password, "deve incluir uma letra maiúscula")
     end
 
     unless password.match?(/\d/)
