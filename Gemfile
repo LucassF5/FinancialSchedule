@@ -20,7 +20,7 @@ gem "jbuilder"
 gem "tailwindcss-rails", "~> 3.0"
 gem "devise", "~> 4.9"
 gem "factory_bot_rails"
-gem "solargraph", "~> 0.50.0"
+# gem "solargraph", "~> 0.50.0"
 
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
