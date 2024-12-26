@@ -5,4 +5,5 @@ class Transaction < ApplicationRecord
   validates :transaction_type, inclusion: { in: transaction_types.keys }
   validates :amount, numericality: { greater_than: 0 }
   validates :date, comparison: { less_than_or_equal_to: Date.today }
+  validates :description, length: { maximum: 255 }
 end
