@@ -21,16 +21,16 @@
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   </head>
 
   <body>
-    <%= render "shared/nav" %>
 
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-    <main class="container mx-auto mt-28 px-5 flex">
-      <%= yield %>
-    </main>
+    <section class="bg-black flex h-screen gap-6 flex-col md:flex-row">
+      <%= render "shared/sidebar" %>
+
+      <main class="flex-1">
+        <%= yield %>
+      </main>	
+    </section>
   </body>
 </html>

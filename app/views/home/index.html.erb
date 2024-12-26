@@ -1,4 +1,9 @@
 <div>
-  <h1 class="font-bold text-3xl text-emerald-700">Home</h1>
-  <p>Find me in app/views/home/index.html.erb</p>
+  <section class="flex mt-8">
+    <div class="flex-1">
+      <h1>Home</h1>
+      <p>Welcome to the home page!</p>
+    </div>
+    <%= link_to "New Transaction", new_transaction_path, class: "btn btn-primary rounded-xl mr-10" %>
+  </section>
 </div>
