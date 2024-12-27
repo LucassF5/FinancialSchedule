@@ -1,2 +1,28 @@
-<div id="<%= dom_id transaction %>">
+<div id="<%= dom_id transaction %>" class="external-box-white mb-4 p-14">
+  <section class="text-center">
+    <h1 class="font-bold text-3xl text-gray-800 mb-10">Transaction Details</h1>
+
+    <p class="text-lg text-gray-600">
+      <span class="text-black font-medium">Amount:</span>
+      <strong class="text-blue-500 text-xl">
+        <%= number_to_currency(transaction.amount, unit: "$ ", separator: ",", delimiter: ".") %>
+      </strong>        
+    </p>
+    <p class="text-lg text-gray-600">
+      <span class="text-black font-medium">Transaction Type:</span>
+      <span class="text-gray-700 font-medium bg-slate-300 rounded-lg py-1 px-3">
+        <%= transaction.transaction_type.humanize %>
+      </span>
+    </p>
+    <p class="text-gray-600 italic">
+      <span class="text-black font-medium">Description:</span>
+      "<%= transaction.description %>"
+    </p>
+    
+    <hr class="border-gray-300 my-4" />
+    <p class="text-sm text-gray-400">
+      <%= transaction.transaction_type == "debit" ? "Spent" : "Received" %>
+          on <%= transaction.date.strftime("%d %B, %Y") %>
+    </p>
+  </section>
 </div>

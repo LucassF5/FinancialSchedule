@@ -1,7 +1,7 @@
 <aside class="bg-gray-800 ml-8 mt-8 p-4 w-48 h-4/6 rounded-2xl">
   <ul class="space-y-4 my-4 text-justify text-slate-300">
     <%= link_to "Home", root_path, class: "sidebar_button" %>
-    <li><a href="/about" class="sidebar_button">About</a></li>
+    <%= link_to "Transactions", transactions_path, class: "sidebar_button" %>
     <li><a href="/services" class="sidebar_button">Services</a></li>
     <li><a href="/contact" class="sidebar_button">Contact</a></li>
   </ul>
