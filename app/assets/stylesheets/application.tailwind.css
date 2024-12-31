@@ -16,6 +16,8 @@
   .input-field {
     @apply w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500;
   }
+
+  .external-box-white {
+    @apply bg-white shadow-md rounded-lg p-6;
+  }
 }
-
-

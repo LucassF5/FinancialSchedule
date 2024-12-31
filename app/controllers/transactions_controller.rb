@@ -1,5 +1,5 @@
 class TransactionsController < ApplicationController
-  before_action :set_transaction, only: [ :edit, :update, :show, :destroy]
+  before_action :set_transaction, only: [ :edit, :update, :show, :destroy ]
   def index
     @transactions = Transaction.all
   end
@@ -12,7 +12,7 @@ class TransactionsController < ApplicationController
     @transaction = Transaction.new(transaction_params)
 
     if @transaction.save
-      redirect_to root_path, notice: "Transaction was successfully created."
+      redirect_to @transaction, notice: "Transaction was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
@@ -26,7 +26,7 @@ class TransactionsController < ApplicationController
 
   def update
     if @transaction.update(transaction_params)
-      redirect_to root_path, notice: "Transaction was successfully updated."
+      redirect_to @transaction, notice: "Transaction was successfully updated."
     else
       render :edit, status: :unprocessable_entity
     end
@@ -34,9 +34,9 @@ class TransactionsController < ApplicationController
 
   def destroy
     if @transaction.destroy!
-      redirect_to root_path, notice: "Transaction was successfully deleted."
+      redirect_to transactions_path, notice: "Transaction was successfully deleted."
     else
-      redirect_to root_path, alert: "Transaction could not be deleted."
+      redirect_to transactions_path, alert: "Transaction could not be deleted."
     end
   end
 

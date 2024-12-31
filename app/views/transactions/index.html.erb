@@ -1,4 +1,43 @@
-<div>
-  <h1 class="font-bold text-4xl">Transactions#index</h1>
-  <p>Find me in app/views/transactions/index.html.erb</p>
+<div class="max-w-6xl mx-auto mt-16 px-6 py-8 bg-gray-900 rounded-lg">
+  <h1 class="font-extrabold text-4xl text-white mb-4">Transactions#index</h1>
+  <p class="text-gray-400 mb-8">Find me in <span class="text-gray-300">app/views/transactions/index.html.erb</span></p>
+
+  <div class="flex items-center justify-between mb-8">
+    <div class="flex-1 text-white">
+      <h1 class="text-2xl font-semibold">Transactions</h1>
+      <p class="text-gray-400 mt-2">Welcome to the transactions page!</p>
+    </div>
+    <%= link_to "New Transaction", new_transaction_path, 
+      class: "bg-blue-600 text-white py-2 px-4 rounded-xl hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50" %>
+  </div>
+
+  <table class="w-full border-collapse bg-gray-800 rounded-lg shadow-md overflow-hidden">
+    <thead class="bg-gray-700 text-gray-300 uppercase text-sm">
+      <tr>
+        <th class="py-3 px-4 text-left">Description</th>
+        <th class="py-3 px-4 text-left">Date</th>
+        <th class="py-3 px-4 text-left">Type</th>
+        <th class="py-3 px-4 text-left">Amount</th>
+        <th class="py-3 px-4 text-left">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @transactions.each do |transaction| %>
+        <tr class="hover:bg-gray-700 transition duration-150 text-white">
+          <td class="py-3 px-4 text-gray-200"><%= transaction.description.empty? ? "-" : transaction.description %></td>
+          <td class="py-3 px-4 text-gray-200"><%= transaction.date.strftime("%d/%b/%Y") %></td>
+          <td class="py-3 px-4 font-bold <%= transaction.transaction_type == 'debit' ? 'text-red-500' : 'text-green-500' %>">
+            <%= transaction.transaction_type.humanize %>
+          </td>
+          <td class="py-3 px-4 text-gray-200"><%= number_to_currency(transaction.amount) %></td>
+          <td class="py-3 px-4 text-gray-200 space-x-4">
+            <%= link_to "Show", transaction_path(transaction), class: "text-blue-400 hover:underline" %>
+            <%= link_to "Edit", edit_transaction_path(transaction), class: "text-yellow-400 hover:underline" %>
+            <%= link_to "Destroy", transaction_path(transaction), 
+              method: :delete, data: { confirm: "Are you sure?" }, class: "text-red-400 hover:underline" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
