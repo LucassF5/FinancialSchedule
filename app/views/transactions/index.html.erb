@@ -24,7 +24,7 @@
     <tbody>
       <% @transactions.each do |transaction| %>
         <tr class="hover:bg-gray-700 transition duration-150 text-white">
-          <td class="py-3 px-4 text-gray-200"><%= transaction.description %></td>
+          <td class="py-3 px-4 text-gray-200"><%= transaction.description.empty? ? "-" : transaction.description %></td>
           <td class="py-3 px-4 text-gray-200"><%= transaction.date.strftime("%d/%b/%Y") %></td>
           <td class="py-3 px-4 font-bold <%= transaction.transaction_type == 'debit' ? 'text-red-500' : 'text-green-500' %>">
             <%= transaction.transaction_type.humanize %>
