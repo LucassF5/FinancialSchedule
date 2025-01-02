@@ -1,21 +1,47 @@
-<aside class="bg-gray-800 ml-8 mt-8 p-4 w-48 h-4/6 rounded-2xl">
-  <ul class="space-y-4 my-4 text-justify text-slate-300">
-    <%= link_to "Home", root_path, class: "sidebar_button" %>
-    <%= link_to "Transactions", transactions_path, class: "sidebar_button" %>
-    <li><a href="/services" class="sidebar_button">Services</a></li>
-    <li><a href="/contact" class="sidebar_button">Contact</a></li>
+<aside class="bg-dark ms-3 mt-3 p-3 rounded-4 shadow-lg" style="width: 250px; height: 70vh;">
+  <ul class="list-unstyled mb-4">
+    <li class="mb-3">
+      <%= link_to root_path, class: "btn btn-dark w-100 text-start rounded-pill text-light" do %>
+        <i class="bi bi-house-door"></i> Home
+      <% end %>
+    </li>
+    <li class="mb-3">
+      <%= link_to transactions_path, class: "btn btn-dark w-100 text-start rounded-pill text-light" do %>
+        <i class="bi bi-cash-stack"></i> Transactions
+      <% end %>
+    </li>
+    <li class="mb-3">
+      <a href="/services" class="btn btn-dark w-100 text-start rounded-pill text-light">
+        <i class="bi bi-tools"></i> Services
+      </a>
+    </li>
+    <li>
+      <a href="/contact" class="btn btn-dark w-100 text-start rounded-pill text-light">
+        <i class="bi bi-envelope"></i> Contact
+      </a>
+    </li>
   </ul>
 
-  <hr class="my-16 border-t border-slate-700">
+  <hr class="border-secondary">
 
-  <ul class="space-y-4 my-4 text-justify text-slate-300">
-    <li><a href="/contact" class="sidebar_button">Settings</a></li>
+  <ul class="list-unstyled mt-4">
+    <li class="mb-3">
+      <a href="/settings" class="btn btn-dark w-100 text-start rounded-pill text-light">
+        <i class="bi bi-gear"></i> Settings
+      </a>
+    </li>
     <% if user_signed_in? %>
-      <%= link_to "Logout", destroy_user_session_path, data: { turbo_method: :delete }, 
-              class:"sidebar_button text-red-300" %>
+      <li>
+        <%= link_to destroy_user_session_path, data: { turbo_method: :delete }, class: "btn btn-dark w-100 text-start rounded-pill text-danger" do %>
+          <i class="bi bi-box-arrow-right"></i> Logout
+        <% end %>
+      </li>
     <% else %>
-      <%= link_to "Logar", new_user_session_path, 
-              class:"sidebar_button text-emerald-300" %>
-    <% end %>  
+      <li>
+        <%= link_to new_user_session_path, class: "btn btn-dark w-100 text-start rounded-pill text-success" do %>
+          <i class="bi bi-box-arrow-in-right"></i> Logar
+        <% end %>
+      </li>
+    <% end %>
   </ul>
 </aside>
