@@ -17,7 +17,7 @@ gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
-gem "tailwindcss-rails", "~> 3.1"
+gem "cssbundling-rails", "~> 1.4"
 gem "devise", "~> 4.9"
 gem "factory_bot_rails"
 # gem "solargraph", "~> 0.50.0"
@@ -67,5 +67,3 @@ group :development do
   gem "web-console"
   gem "rails_live_reload"
 end
-
-gem "cssbundling-rails", "~> 1.4"
