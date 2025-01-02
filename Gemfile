@@ -67,3 +67,5 @@ group :development do
   gem "web-console"
   gem "rails_live_reload"
 end
+
+gem "cssbundling-rails", "~> 1.4"
