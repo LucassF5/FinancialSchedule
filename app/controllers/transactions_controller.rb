@@ -1,7 +1,7 @@
 class TransactionsController < ApplicationController
   before_action :set_transaction, only: [ :edit, :update, :show, :destroy ]
   def index
-    @transactions = Transaction.all
+    @transactions = current_user.transactions.all
   end
 
   def new
@@ -9,7 +9,7 @@ class TransactionsController < ApplicationController
   end
 
   def create
-    @transaction = Transaction.new(transaction_params)
+    @transaction = current_user.transactions.create(transaction_params)
 
     if @transaction.persisted?
       redirect_to @transaction, notice: "Transaction was successfully created."
