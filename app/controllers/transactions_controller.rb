@@ -11,7 +11,7 @@ class TransactionsController < ApplicationController
   def create
     @transaction = Transaction.new(transaction_params)
 
-    if @transaction.save
+    if @transaction.persisted?
       redirect_to @transaction, notice: "Transaction was successfully created."
     else
       render :new, status: :unprocessable_entity
