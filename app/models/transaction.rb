@@ -1,5 +1,6 @@
 class Transaction < ApplicationRecord
   belongs_to :user
+  belongs_to :category
 
   enum :transaction_type, [ :debit, :credit ]
 
