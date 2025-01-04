@@ -1,4 +1,6 @@
 class Transaction < ApplicationRecord
+  belongs_to :user
+
   enum :transaction_type, [ :debit, :credit ]
 
   validates :amount, :transaction_type, :date, presence: true
